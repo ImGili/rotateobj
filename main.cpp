@@ -5,11 +5,14 @@
 #include <osgDB/ReadFile>
 #include <osgDB/WriteFile>
 #include <osg/MatrixTransform>
+#include <osgDB/Registry>
 typedef std::filesystem::path FPath;
 typedef std::vector<FPath> FPathVector; 
 
 void GetObjPathFile(const FPath& fpath);
 static FPathVector s_ObjPaths;
+USE_OSGPLUGIN(obj)
+USE_OSGPLUGIN(png)
 int main(int argc, char *argv[])
 {
     cmdline::parser a;

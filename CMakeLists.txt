@@ -9,21 +9,32 @@ endif()
 
 add_definitions(-DOSG_LIBRARY_STATIC)
 ######################### OSG ######################################
-find_package(OpenSceneGraph 3.6.0 REQUIRED osgDB)
+find_package(OpenSceneGraph 3.6.0 REQUIRED osgDB osgGA osgUtil osgText osgViewer osgWidget osgUtil)
 
 if(OSG_FOUND)
     message("FOUND OSG")
 else()
     message("NOT FOUND OSG")
 endif()
-
+file(GLOB OSG_PLUGIN_LIBS               ${OSG_PLUGIN_LIB_DIR}/*.lib
+                                    )
 
 add_executable(${PROJECT_NAME} main.cpp)
 
 target_link_libraries(${PROJECT_NAME}
         PUBLIC
         ${OSG_LIBRARIES} 
+        ${OSGVIEWER_LIBRARIES}
+        ${OSGUTIL_LIBRARIES} 
         ${OSGDB_LIBRARIES} 
+        ${OSGGA_LIBRARIES} 
+        ${OPENTHREADS_LIBRARIES}
+        ${OSG_PLUGIN_LIBS}
+        ${OSGTEXT_LIBRARIES}
+        ${OSG_PLUGIN_LIB_DIR}/
+        opengl32.lib
+        D:/codes/vcpkg/installed/x64-windows-static/debug/lib/libpng16d.lib
+        D:/codes/vcpkg/installed/x64-windows-static/debug/lib/zlibd.lib
 )   
 
 target_include_directories(${PROJECT_NAME}

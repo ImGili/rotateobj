@@ -94,5 +94,6 @@
         "dynamiclibrary": "cpp",
         "referenced": "cpp",
         "group": "cpp"
-    }
+    },
+    "cmake.configureOnEdit": false
 }
